@@ -1,13 +1,11 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
 $conn = mysqli_connect("localhost", "phpuser", "php123", "testdb");
 if (!$conn) {
     die("Database connection failed");
 }
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +27,6 @@ if (isset($_POST['username'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // ✅ Secure query (prepared statement)
     $stmt = mysqli_prepare(
         $conn,
         "SELECT * FROM users WHERE username=? AND password=?"
